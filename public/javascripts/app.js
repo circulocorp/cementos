@@ -13,8 +13,21 @@ app.controller('MainCtrl', function ($scope, $http, $window) {
 });
 
 app.controller('ReportCtrl', function($scope, NgTableParams, $http){
-	$scope.filter = {}
+	$scope.filter = {};
+	$scope.dpFormat = 'dd-MMMM-yyyy';
+	$scope.dateOptions = {
+    	formatYear: 'yy',
+    	maxDate: new Date(2020, 5, 22),
+    	minDate: new Date(),
+    	startingDay: 1
+  	};
 
+  	$scope.popup1 = {
+    	opened: false
+  	};
+  	$scope.open1 = function() {
+    	$scope.popup1.opened = true;
+  	};
 	$scope.searchReport = function(){
 		$http.post('./api/events', $scope.filter).then(function(response){
 			$scope.tableParams = new NgTableParams({filter:{}}, { dataset: response.data });

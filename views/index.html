@@ -28,6 +28,14 @@
                     <input type="text" class="form-control" id="inputFolio" placeholder="Unidad" ng-model="filter.unitid">
                 </div>
               </div>
+              <div class="col-md-2">
+              <div class="form-group">
+                <input type="text" class="form-control" uib-datepicker-popup="{{dpFormat}}" ng-model="filter.from" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>    
+              </div>
+              </div>
             </div>
                 <button ng-click="searchReport()" class="btn btn-primary">Buscar</button>
             </form>
