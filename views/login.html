@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cementos">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GVT Cementos</title>
+    <link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
+    <style type="text/css">
+        .login-form {
+            width: 440px;
+            margin: 50px auto;
+        }
+
+        .login-form form {
+            margin-bottom: 15px;
+            background: #f7f7f7;
+            box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+        }
+
+        .login-form h2 {
+            margin: 0 0 15px;
+        }
+
+        .form-control,
+        .btn {
+            min-height: 38px;
+            border-radius: 2px;
+        }
+
+        .btn {
+            font-size: 15px;
+            font-weight: bold;
+        }
+    </style>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body ng-controller="MainCtrl">
+
+<div class="login-form" id="parent">
+    <form method="post" id="formLogin" onsubmit="login()">
+        <div class="logo"></div>
+        <div class="form-group"><input class="form-control" type="text" id="Username" name="Username" ng-model="loginForm.user" minlength="4" maxlength="20" placeholder="Usuario" required="required" /></div>
+        <div class="form-group"><input class="form-control" type="password" ng-model="loginForm.password" name="Password" placeholder="Password" required="required" /></div>
+        <div class="form-group"><button class="btn btn-primary btn-block" type="button" ng-click="login()">Entrar</button></div>
+    </form>
+</div>
+
+</body>
+<% include scripts.html %>
+</html>

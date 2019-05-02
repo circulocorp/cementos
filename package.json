@@ -1,0 +1,26 @@
+{
+  "name": "cementos",
+  "version": "1.0.0",
+  "description": "Modulo GVT Cementos",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "request": "2.88.0",
+    "body-parser": "1.18.3",
+    "cookie-parser": "latest",
+    "express": "4.16.3",
+    "request-promise": "4.2.2",
+    "morgan": "~1.9.0",
+    "express-session": "latest",
+    "ejs": "latest",
+    "docker-secrets-nodejs": "^1.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:circulocorp/cementos.git"
+  },
+  "author": "Mauricio Barrera",
+  "license": "ISC"
+}

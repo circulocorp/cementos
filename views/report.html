@@ -1,0 +1,7 @@
+<table ng-table="tableParams" class="table" show-filter="true" cellspacing="0" width="100%">
+              <tr ng-repeat="event in $data">
+                <td data-title="'ID'" filter="{id: 'text'}" sortable="'id'">{{ event.UnitId }}</td>
+                <td data-title="'Tipo'" filter="{tipo: 'text'}" sortable="'cliente'">{{ event.pumping }}</td>
+                <td data-title="'Fuel Level'" filter="{fuelLevel: 'text'}" sortable="'fuelLevel'">{{ event.fuelLevel}}</td>
+              </tr>
+</table>

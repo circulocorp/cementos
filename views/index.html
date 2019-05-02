@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cementos">
+
+<head>
+    <% include header.html %>
+</head>
+
+<body  ng-controller="ReportCtrl">
+<% include navbar.html %>    
+<div id="wrapper">
+
+    
+    <% include sidebar.html %>     
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-search"></i>
+              Filtro
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                <div class="col-md-2">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="inputFolio" placeholder="Unidad" ng-model="filter.unitid">
+                </div>
+              </div>
+            </div>
+                <button ng-click="searchReport()" class="btn btn-primary">Buscar</button>
+            </form>
+            </div>
+          </div>
+          <!-- Area Chart Example-->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-chart-area"></i>
+              Reporte de Eventos</div>
+            <div class="card-body">
+              <% include report.html %>                
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+        <!-- Sticky Footer -->
+       <% include footer.html %>
+
+      </div>
+      <!-- /.content-wrapper -->
+
+</div>
+    <!-- /#wrapper -->
+</body>
+
+<% include scripts.html %>
+
+</html>
