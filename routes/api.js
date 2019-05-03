@@ -12,7 +12,7 @@ router.post('/events', function(req, res, next){
    		uri: url,
    		json: true,
    		method: 'GET',
-   		query: data
+   		qs: data
 
 	};
 	request(options, (err, re, body) => {
