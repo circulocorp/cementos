@@ -8,22 +8,21 @@ var circulocorp = process.env.CIRCULOCORP
 var baseurl = process.env.URL
 
 
-
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	//if (req.session.user && req.cookies.user_sid) {
-  		res.render('index');
-   /* }else{
-    	res.redirect('/login')
-    }*/
+	if (req.session.user) {
+  		res.status("200").render('index', {username: req.session.user});
+   }else{
+    	res.status(403).redirect('/login');
+  }   
 });
 
 router.get('/login', function(req, res, next) {
-	if (req.session.user && req.cookies.user_sid) {
-  		res.redirect('./');
+  console.log(req.session);
+	if (req.session.user && req.session.token) {
+  		res.status(200).redirect('./');
     }else{
-    	res.render('login');
+    	res.status(403).render('./login');
     }
 });
 

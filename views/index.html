@@ -29,20 +29,10 @@
                 </div>
               </div>
               <div class="col-md-2">
-              <div class="form-group">
-                <input type="text" class="form-control" uib-datepicker-popup="{{dpFormat}}" ng-model="filter.from" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
-          </span>    
-              </div>
+                De: <input type="datetime-local" id="from"  placeholder="yyyy-MM-ddTHH:mm:ss" ng-model="filter.from" />  
               </div>
               <div class="col-md-2">
-              <div class="form-group">
-                <input type="text" class="form-control" uib-datepicker-popup="{{dpFormat}}" ng-model="filter.until" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
-          </span>    
-              </div>
+                Hasta: <input type="datetime-local" id="until" placeholder="yyyy-MM-ddTHH:mm:ss"  ng-model="filter.until" required/>
               </div>
             </div>
                 <button ng-click="searchReport()" class="btn btn-primary">Buscar</button>
@@ -53,7 +43,7 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-chart-area"></i>
-              Reporte de Eventos</div>
+              Reporte de Eventos&nbsp; <button ng-click="downloadCsv()" class="btn btn-primary">Exportar CSV</button></div>
             <div class="card-body">
               <% include report.html %>                
             </div>

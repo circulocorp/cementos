@@ -7,22 +7,20 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "request": "2.88.0",
-    "body-parser": "1.18.3",
-    "cookie-parser": "latest",
-    "express": "4.16.3",
-    "request-promise": "4.2.2",
-    "morgan": "~1.9.0",
-    "express-session": "latest",
     "angular": "latest",
-    "ng-table": "3.0.1",
-    "angularjs-datepicker": "2.1.23",
-    "ejs": "latest",
+    "body-parser": "1.18.3",
+    "bootstrap": "4.3.1",
+    "cookie-parser": "latest",
     "docker-secrets-nodejs": "^1.0.5",
-    "bootstrap": "4.2.1",
-    "angular-ui-bootstrap": "2.5.6",
+    "ejs": "latest",
+    "express": "4.16.3",
+    "express-session": "latest",
     "jquery": "latest",
-    "jquery.easing": "1.4.1"
+    "jquery.easing": "1.4.1",
+    "morgan": "~1.9.0",
+    "ng-table": "3.0.1",
+    "request": "2.88.0",
+    "request-promise": "4.2.2"
   },
   "repository": {
     "type": "git",
