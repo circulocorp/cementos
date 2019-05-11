@@ -1,0 +1,5 @@
+README.md
+buildspec.yml
+.gitignore
+Dockerfile
+.DS_Store
