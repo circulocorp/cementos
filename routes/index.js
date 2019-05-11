@@ -18,7 +18,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-  console.log(req.session);
 	if (req.session.user && req.session.token) {
   		res.status(200).redirect('./');
     }else{

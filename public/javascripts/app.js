@@ -42,7 +42,9 @@ app.controller('ReportCtrl', function($scope, NgTableParams, $http){
 	};
 
 	$scope.downloadCsv = function(){
-		console.log("Download csv");
-		
+		 window.open('./api/downloadCsv', 'reporte.csv');;
+	}
+	$scope.downloadExcel = function(){
+		 window.open('./api/downloadExcel', 'reporte.xlsx');;
 	}
 });

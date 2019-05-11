@@ -17,8 +17,10 @@
     "express-session": "latest",
     "jquery": "latest",
     "jquery.easing": "1.4.1",
+    "json2csv": "^4.5.1",
     "morgan": "~1.9.0",
     "ng-table": "3.0.1",
+    "node-excel-export": "^1.4.4",
     "request": "2.88.0",
     "request-promise": "4.2.2"
   },
