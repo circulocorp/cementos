@@ -112,7 +112,7 @@ router.post('/login', function(req, res, next){
 	var mzone = 'https://login.mzoneweb.net/connect/token';
 	var user = req.body.user;
 	var password = req.body.password;
-	var mzone_secret = "WJ4wUJo79qFsMm4T9Rj7dKw4";//secrets.get("mzone_secret");
+	var mzone_secret = secrets.get("mzone_secret");
 	var data = {'grant_type': 'password', 'username': user, 'password': password, 'client_id': 'mz-a3tek', 
 	'client_secret': mzone_secret, 'scope': 'openid mz6-api.all mz_username'}
 	var options = {
