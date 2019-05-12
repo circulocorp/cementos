@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 	if (req.session.user) {
   		res.status("200").render('index', {username: req.session.user});
    }else{
-    	res.status(403).redirect('/login');
+    	res.status(403).redirect('./login');
   }   
 });
 
