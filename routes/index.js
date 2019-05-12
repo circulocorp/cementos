@@ -4,8 +4,6 @@ var session = require('express-session');
 var router = express.Router();
 
 const title = 'GVT Cementos';
-var circulocorp = process.env.CIRCULOCORP
-var baseurl = process.env.URL
 
 
 /* GET home page. */

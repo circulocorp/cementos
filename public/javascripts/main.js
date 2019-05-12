@@ -6,7 +6,7 @@ app.controller('MainCtrl', function ($scope, $http, $window) {
 		var loginForm = $scope.loginForm;
 		$http.post('./api/login', loginForm).then(function(response){
 			if(response.status == 200){
-				$window.location.href = '/';
+				$window.location.href = './';
 			}else {
 				console.log("Invalid");
 			}

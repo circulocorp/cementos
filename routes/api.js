@@ -114,7 +114,8 @@ router.post('/login', function(req, res, next){
 	var password = req.body.password;
 	var mzone_secret = secrets.get("mzone_secret");
 	var data = {'grant_type': 'password', 'username': user, 'password': password, 'client_id': 'mz-a3tek', 
-	'client_secret': mzone_secret, 'scope': 'openid mz6-api.all mz_username'}
+	'client_secret': mzone_secret, 'scope': 'openid mz6-api.all mz_username'};
+	console.log(data);
 	var options = {
 		headers: {
 			'Accept': 'application/json',
@@ -133,6 +134,7 @@ router.post('/login', function(req, res, next){
 		   		json: true,
 		   		method: 'GET'
 			};
+			console.log(options2);
 			request(options2, (err, re2, body2) => {
 				var canuser = body2[0];
 				if(canuser && canuser.isActive){
