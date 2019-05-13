@@ -5,7 +5,7 @@ app.filter('pumping', function(){
 		if(input == 1)
 			return "Inicio de Carga";
 		else if(input == 0)
-			return "Evento CAN";
+			return "Gasolina";
 		else if(input == -1)
 			return "Fin de Carga";
 		else
@@ -13,12 +13,27 @@ app.filter('pumping', function(){
 	}
 });
 
+app.filter('localdate', function(){
+	return function(input){
+		return new Date(input*1000).toLocaleString("es-MX", {timeZone: "America/Mexico_city"});
+	}
+});
 
 
-app.controller('ReportCtrl', function($scope, NgTableParams, $http){
+app.controller('ReportCtrl', function($scope, NgTableParams, $http, $window){
 	$scope.filter = {};
   	$scope.eventDetail = {};
-  	
+	
+	$scope.logout = function(){
+		$http.post('./api/logout').then(function(response){
+			if(response.status == 200){
+				$window.location.href = './';
+			}else {
+				console.log("Invalid");
+			}
+		});	
+	}
+
   	$scope.closeDetail = function(){
   		$('#modaldetailEvent').modal('hide');
   		$scope.eventDetail = {};

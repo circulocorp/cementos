@@ -11,5 +11,6 @@ app.controller('MainCtrl', function ($scope, $http, $window) {
 				console.log("Invalid");
 			}
 		});
-	}
+	};
+
 });

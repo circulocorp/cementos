@@ -33,12 +33,12 @@ function fixData(data){
 		for(var i=0;i<data.length;i++){
 			nevent = data[i];
 			if(nevent["eventType"] == "1078")
-				nevent["type"] = "RPM"
+				nevent["type"] = "Combustible";
 			else if (nevent["eventType"] == "133")
-				nevent["type"] = "Inicio de Carga"
+				nevent["type"] = "Inicio de Carga";
 			else if (nevent["eventType"] == "132")
-				nevent["type"] = "Fin de Carga"
-			nevent["fecha"] = new Date(nevent["utcTimestampSeconds"]*1000).toGMTString();
+				nevent["type"] = "Fin de Carga";
+			nevent["fecha"] = new Date(nevent["utcTimestampSeconds"]*1000).toLocaleString("es-MX", {timeZone: "America/Mexico_city"});
 			ndata.push(nevent);
 	}
 	return ndata;
@@ -115,7 +115,6 @@ router.post('/login', function(req, res, next){
 	var mzone_secret = secrets.get("mzone_secret");
 	var data = {'grant_type': 'password', 'username': user, 'password': password, 'client_id': 'mz-a3tek', 
 	'client_secret': mzone_secret, 'scope': 'openid mz6-api.all mz_username'};
-	console.log(data);
 	var options = {
 		headers: {
 			'Accept': 'application/json',
@@ -134,7 +133,6 @@ router.post('/login', function(req, res, next){
 		   		json: true,
 		   		method: 'GET'
 			};
-			console.log(options2);
 			request(options2, (err, re2, body2) => {
 				var canuser = body2[0];
 				if(canuser && canuser.isActive){
@@ -149,8 +147,11 @@ router.post('/login', function(req, res, next){
 			res.status(403).send({error: err});
 		}
 	});
-
-
 });
+
+router.post('/logout', function(req, res, next){
+	req.session.destroy();
+	res.status(200).send({status: "Success"});
+})
 
 module.exports = router;

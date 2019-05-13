@@ -38,7 +38,7 @@
               <tr ng-repeat="event in $data">
                 <td data-title="'Unidad'" filter="{id: 'text'}" sortable="'id'">{{ event.UnitId }}</td>
                 <td data-title="'Tipo'" filter="{pumping: 'text'}" sortable="'pumping'">{{ event.pumping | pumping }}</td>
-                <td data-title="'Fecha'" filter="{Fecha: 'text'}" sortable="'Fecha'">{{ event.utcTimestampSeconds * 1000 | date: 'yyyy-MM-dd HH:mm:ss Z' }}</td>
+                <td data-title="'Fecha'" filter="{Fecha: 'text'}" sortable="'Fecha'">{{ event.utcTimestampSeconds | localdate }}</td>
                 <td data-title="'% Combustible'" filter="{fuelLevel: 'text'}" sortable="'fuelLevel'">{{ event.fuelLevel}}</td>
                 <td data-title="'Velocidad Motor'" filter="{engineSpeed: 'text'}" sortable="'engineSpeed'">{{ event.engineSpeed}}</td>
                 <td><button type="button" class="btn btn-info" ng-click="detail(event)">Detalle</button></td>
