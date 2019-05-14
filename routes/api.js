@@ -7,6 +7,8 @@ const excel = require('node-excel-export');
 var router = express.Router();
 var API_URL = process.env.API_URL || "http://localhost:8080/api";
 
+const FUEL_SIZE = 378.54; 
+
 router.post('/events', function(req, res, next){
 	if(req.session.user && req.session.token){
 	var url = API_URL+'/canevents/report';
@@ -39,6 +41,12 @@ function fixData(data){
 			else if (nevent["eventType"] == "132")
 				nevent["type"] = "Fin de Carga";
 			nevent["fecha"] = new Date(nevent["utcTimestampSeconds"]*1000).toLocaleString("es-MX", {timeZone: "America/Mexico_city"});
+
+			if(nevent["fuelLevel"] > 0){
+				nevent["fuelAmount"] = (nevent["fuelLevel"]*FUEL_SIZE) / 100;
+			}else{
+				nevent["fuelAmount"] = 0;
+			}
 			ndata.push(nevent);
 	}
 	return ndata;
@@ -50,7 +58,7 @@ router.get('/downloadCsv', function(req, res, next){
     			{label: 'Evento', value: 'type'}, {label:'Fechay Hora',value:'fecha'}, 
     			{label:'Latitud', value:'latitude'}, {label:'Longitud', value:'longitude'}, {label:'RPM', value:'engineSpeed'}, 
     			{label:'Combustible Total Usado', value:'totalUsedFuel'}, {label:'Consumo de combustible instantaneo', value:'fuelRate'}, 
-    			{label:'Nivel de combustible', value:'fuelLevel'}];
+    			{label:'Nivel de combustible %', value:'fuelLevel'}, {label: 'Nivel de combustible en litros', value:'fuelAmount'}];
 	const json2csvParser = new Parser({ fields });
 	var data = req.session.reporte;
 	const csv = json2csvParser.parse(fixData(data));
@@ -86,11 +94,12 @@ router.get('/downloadExcel', function(req, res, next){
 			[{value: 'Unidad',style: styles.headerDark}, {value: 'Evento',style: styles.headerDark},
 			{value: 'Fecha y Hora',style: styles.headerDark}, {value: 'Latitud', style: styles.headerDark}, {value: 'Longitud',style: styles.headerDark},
 			{value: 'RPM', style: styles.headerDark},{value:'Combustible Total Usado',style: styles.headerDark},
-			{value:'Consumo de combustible instantaneo',style: styles.headerDark},{value:'Nivel de Combustible',style: styles.headerDark}]
+			{value:'Consumo de combustible instantaneo',style: styles.headerDark},{value:'Nivel de Combustible %',style: styles.headerDark},
+			{value:'Nivel de Combustible en Litros',style: styles.headerDark}]
 		];
 		var specs = {
 			UnitId: {width:80}, type: {width:100},fecha: {width:200}, latitude:{width:100}, longitude: {width:100}, 
-			engineSpeed: {width:80}, totalUsedFuel:{width:80}, fuelRate:{width:80}, fuelLevel: {width:80}	
+			engineSpeed: {width:80}, totalUsedFuel:{width:80}, fuelRate:{width:80}, fuelLevel: {width:100}, fuelAmount: {width:100}	
 		}
 		var dataset = fixData(req.session.reporte);
 		var report = excel.buildExport([{
