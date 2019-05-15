@@ -5,7 +5,7 @@ app.filter('pumping', function(){
 		if(input == 1)
 			return "Inicio de Carga";
 		else if(input == 0)
-			return "Gasolina";
+			return "Combustible";
 		else if(input == -1)
 			return "Fin de Carga";
 		else

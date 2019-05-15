@@ -57,8 +57,8 @@ router.get('/downloadCsv', function(req, res, next){
     var fields = [{label: 'Unidad', value: 'UnitId'}, 
     			{label: 'Evento', value: 'type'}, {label:'Fechay Hora',value:'fecha'}, 
     			{label:'Latitud', value:'latitude'}, {label:'Longitud', value:'longitude'}, {label:'RPM', value:'engineSpeed'}, 
-    			{label:'Combustible Total Usado', value:'totalUsedFuel'}, {label:'Consumo de combustible instantaneo', value:'fuelRate'}, 
-    			{label:'Nivel de combustible %', value:'fuelLevel'}, {label: 'Nivel de combustible en litros', value:'fuelAmount'}];
+    			{label:'Combustible Total Usado (L)', value:'totalUsedFuel'}, {label:'Consumo de combustible instantaneo (L/100KM)', value:'fuelRate'}, 
+    			{label:'Nivel de combustible (%)', value:'fuelLevel'}, {label: 'Nivel de combustible (L)', value:'fuelAmount'}];
 	const json2csvParser = new Parser({ fields });
 	var data = req.session.reporte;
 	const csv = json2csvParser.parse(fixData(data));
@@ -93,9 +93,9 @@ router.get('/downloadExcel', function(req, res, next){
 		var heading = [
 			[{value: 'Unidad',style: styles.headerDark}, {value: 'Evento',style: styles.headerDark},
 			{value: 'Fecha y Hora',style: styles.headerDark}, {value: 'Latitud', style: styles.headerDark}, {value: 'Longitud',style: styles.headerDark},
-			{value: 'RPM', style: styles.headerDark},{value:'Combustible Total Usado',style: styles.headerDark},
-			{value:'Consumo de combustible instantaneo',style: styles.headerDark},{value:'Nivel de Combustible %',style: styles.headerDark},
-			{value:'Nivel de Combustible en Litros',style: styles.headerDark}]
+			{value: 'RPM', style: styles.headerDark},{value:'Combustible Total Usado (L)',style: styles.headerDark},
+			{value:'Consumo de combustible instantaneo (L/100KM)',style: styles.headerDark},{value:'Nivel de Combustible (%)',style: styles.headerDark},
+			{value:'Nivel de Combustible (L)',style: styles.headerDark}]
 		];
 		var specs = {
 			UnitId: {width:80}, type: {width:100},fecha: {width:200}, latitude:{width:100}, longitude: {width:100}, 
