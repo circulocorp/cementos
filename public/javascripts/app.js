@@ -3,11 +3,11 @@ var app = angular.module('cementos', ['ngTable']);
 app.filter('pumping', function(){
 	return function(input){
 		if(input == 1)
-			return "Inicio de Carga";
+			return "Inicio de Bombeo";
 		else if(input == 0)
 			return "Combustible";
 		else if(input == -1)
-			return "Fin de Carga";
+			return "Fin de Bombeo";
 		else
 			return "Evento Desconocido";
 	}

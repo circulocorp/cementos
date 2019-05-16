@@ -37,9 +37,9 @@ function fixData(data){
 			if(nevent["eventType"] == "1078")
 				nevent["type"] = "Combustible";
 			else if (nevent["eventType"] == "133")
-				nevent["type"] = "Inicio de Carga";
+				nevent["type"] = "Inicio de Bombeo";
 			else if (nevent["eventType"] == "132")
-				nevent["type"] = "Fin de Carga";
+				nevent["type"] = "Fin de Bombeo";
 			nevent["fecha"] = new Date(nevent["utcTimestampSeconds"]*1000).toLocaleString("es-MX", {timeZone: "America/Mexico_city"});
 
 			if(nevent["fuelLevel"] > 0){
