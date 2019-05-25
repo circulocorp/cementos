@@ -25,7 +25,12 @@
                 <div class="row">
                 <div class="col-md-2">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="inputFolio" placeholder="Unidad" ng-model="filter.UnitId">
+                  <multiple-autocomplete ng-model="filter.UnitId"
+                           api-url="./api/vehicles"
+                           suggestions-arr=""
+                           close-after-selected="true"
+                           api-url-option="apiVehicles">
+                  </multiple-autocomplete>
                 </div>
               </div>
               <div class="col-md-2">

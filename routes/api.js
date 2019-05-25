@@ -116,12 +116,30 @@ router.get('/downloadExcel', function(req, res, next){
 	}
 });
 
+router.get('/vehicles', function(req, res, next){
+	if(req.session.user && req.session.token){
+		var mzone = 'https://live.mzoneweb.net/mzone61.api/Vehicles?$filter=unit_Id=';
+		var auth = "Bearer "+req.session.token;
+		var headers = {"Authorization": auth};
+		var options = {
+			headers: headers,
+			uri: mzone,
+			json: true,
+			method: 'GET'
+		}
+		request(options, (err, re, body) => {
+			res.status(200).send(body);
+		});
+	}else{
+		res.status(403).send({"error": "Unauthorized"});	
+	}
+});
 
 router.post('/login', function(req, res, next){
 	var mzone = 'https://login.mzoneweb.net/connect/token';
 	var user = req.body.user;
 	var password = req.body.password;
-	var mzone_secret = secrets.get("mzone_secret");
+	var mzone_secret = "WJ4wUJo79qFsMm4T9Rj7dKw4";//secrets.get("mzone_secret");
 	var data = {'grant_type': 'password', 'username': user, 'password': password, 'client_id': 'mz-a3tek', 
 	'client_secret': mzone_secret, 'scope': 'openid mz6-api.all mz_username'};
 	var options = {

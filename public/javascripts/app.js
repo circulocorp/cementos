@@ -1,4 +1,4 @@
-var app = angular.module('cementos', ['ngTable']);
+var app = angular.module('cementos', ['ngTable', 'multipleSelect']);
 
 app.filter('pumping', function(){
 	return function(input){
@@ -23,6 +23,13 @@ app.filter('localdate', function(){
 app.controller('ReportCtrl', function($scope, NgTableParams, $http, $window){
 	$scope.filter = {};
   	$scope.eventDetail = {};
+
+  	$scope.apiVehicles = {
+  		method: 'GET',
+  		responseInterceptor : function (response) {
+  			
+  		}
+  	}
 	
 	$scope.logout = function(){
 		$http.post('./api/logout').then(function(response){
