@@ -25,6 +25,7 @@ router.post('/events', function(req, res, next){
 		res.status(200).send(body);
 	});
 	}else{
+		console.log('/events error:Unauthorized')
 		res.status(403).send({"error": "Unauthorized"});
 	}
 });
@@ -32,7 +33,7 @@ router.post('/events', function(req, res, next){
 
 function fixData(data){
 	var ndata = [];
-		for(var i=0;i<data.length;i++){
+	for(var i=0;i<data.length;i++){
 			nevent = data[i];
 			if(nevent["eventType"] == "1078")
 				nevent["type"] = "Combustible";
@@ -66,6 +67,7 @@ router.get('/downloadCsv', function(req, res, next){
 	res.setHeader('Content-Disposition', 'attachment; filename=\"reporte.csv\"');
 	res.status(200).send(csv);
 	}else{
+		console.log('/events error:Unauthorized')
 		res.status(403).send({"error": "Unauthorized"});
 	}
 });
@@ -89,6 +91,7 @@ const styles = {
 }
 
 router.get('/downloadExcel', function(req, res, next){
+	try{
 	if(req.session.user && req.session.token && req.session.reporte){
 		var heading = [
 			[{value: 'Unidad',style: styles.headerDark}, {value: 'Evento',style: styles.headerDark},
@@ -114,6 +117,10 @@ router.get('/downloadExcel', function(req, res, next){
 	}else{
 		res.status(403).send({"error": "Unauthorized"});
 	}
+ }catch(err){
+ 	res.status(403).send({"error": "Unauthorized"});
+ 	console.log(err);
+ }
 });
 
 
