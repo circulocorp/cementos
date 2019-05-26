@@ -1,6 +1,6 @@
 {
   "name": "cementos",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Modulo GVT Cementos",
   "main": "app.js",
   "scripts": {
